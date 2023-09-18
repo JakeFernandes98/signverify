@@ -1,7 +1,7 @@
 {
-  "name": "@jakef98/signverify",
+  "name": "did-signverify",
   "version": "1.0.0",
-  "description": "",
+  "description": "A package to sign and verify messages using did resolvers and JWKs",
   "type": "module",
   "scripts": {
     "start": "nodemon --exec ts-node-esm ./index.ts",
