@@ -26,8 +26,6 @@ export class GeneralJwsSigner {
   }
 
   async addSignature(signatureInput: SignatureInput): Promise<void> {
-    // console.log("START OF DWN")
-    // console.log(signatureInput)
     const { privateJwk, protectedHeader } = signatureInput;
     const signer = signers[privateJwk.crv];
 

@@ -13,7 +13,6 @@ export type APIBody = {
 //supports did:key and did:web
 export async function verify(message: APIBody){
     let content = message.content
-    // console.log('verify14,',message)
     let authorisation = message.authorisation
 
     const authorisationCid = GeneralJwsVerifier.decodePlainObjectPayload(authorisation);
@@ -33,7 +32,6 @@ export async function verify(message: APIBody){
 
 export async function verifyWithPublicKey(message: APIBody, publicJwk: PublicJwk){
   let content = message.content
-  // console.log('verify14,',message)
   let authorisation = message.authorisation
 
   const authorisationCid = GeneralJwsVerifier.decodePlainObjectPayload(authorisation);

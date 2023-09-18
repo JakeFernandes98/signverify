@@ -24,7 +24,6 @@ function publicKeyToJwk(publicKeyBytes: Uint8Array): PublicJwk {
 
 export const ed25519: Signer = {
   sign: (content: Uint8Array, privateJwk: PrivateJwk): Promise<Uint8Array> => {
-    // console.log(privateJwk)
     validateKey(privateJwk);
 
     let privateKeyBytes = Encoder.base64UrlToBytes(privateJwk.d);

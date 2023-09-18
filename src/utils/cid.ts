@@ -53,14 +53,10 @@ export async function generateCid(payload: any, codecCode = cbor.code, multihash
   const payloadBytes = codec.encode(payload);
   const payloadHash = await hasher.digest(payloadBytes);
 
-  // console.log(codec.code)
-  // console.log(payloadHash)
-
   return await CID.createV1(codec.code, payloadHash);
 }
 
 export function parseCid(str: string): CID {
-  // console.log('cid63 - ', str)
   const cid = CID.parse(str).toV1();
 
   if (!codecs[cid.code]) {
