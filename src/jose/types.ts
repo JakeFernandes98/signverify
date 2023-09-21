@@ -65,3 +65,8 @@ export interface Signer {
    */
   publicKeyToJwk(publicKeyBytes: Uint8Array): Promise<PublicJwk>
 }
+
+export enum ALGS {
+  ED25519,
+  SECP256K1,
+}

@@ -4,6 +4,8 @@ import { DidResolutionResult, DIDDocument, DidWithKeys } from './types.js';
 import {  Resolver } from 'did-resolver';
 import { getResolver } from 'web-did-resolver';
 import { DidMethodResolver } from './did-resolver.js';
+import { ALGS } from '../jose/types.js';
+import { secp256k1 } from '../jose/algorithms/secp256k1.js';
 
 export class DidWebResolver implements DidMethodResolver {
     method(): string {
@@ -25,10 +27,21 @@ export class DidWebResolver implements DidMethodResolver {
      * generates a new ed25519 public/private key pair. Creates a DID using the private key
      * @returns did, public key, private key
      */
-    public static async generate(did:string){
+    public static async generate(did:string, alg:ALGS){
+
 
         let keyId = did+"#key-1"
-        const { publicJwk, privateJwk } = await ed25519.generateKeyPair();
+        let jwkPair: { publicJwk: any; privateJwk: any; }
+        if (alg == ALGS.ED25519){
+          jwkPair = await ed25519.generateKeyPair();
+        }else if (alg == ALGS.SECP256K1){
+          jwkPair = await secp256k1.generateKeyPair();
+        }else{
+          throw("Algorithm not supported")
+        }
+
+        const { publicJwk, privateJwk } = jwkPair
+        
 
         const didDocument: DIDDocument = {
             '@context': [

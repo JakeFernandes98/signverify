@@ -1,6 +1,6 @@
 {
   "name": "did-signverify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A package to sign and verify messages using did resolvers and JWKs",
   "type": "module",
   "scripts": {
